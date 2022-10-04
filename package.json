@@ -4,7 +4,7 @@
   "description": "This is a simple library management crud api",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
+    "start": "node server",
     "test": "jest"
   },
   "author": "Tazbinur",
@@ -18,5 +18,8 @@
     "joi-objectid": "^4.0.2",
     "mongoose": "^6.6.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^29.1.2",
+    "supertest": "^6.3.0"
+  }
 }
