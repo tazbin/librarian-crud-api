@@ -39,6 +39,7 @@ const updateBook = async(
     fields) => {
     try {
 
+        console.log(bookId);
         const books = await Book
         .findByIdAndUpdate(bookId, fields);
 

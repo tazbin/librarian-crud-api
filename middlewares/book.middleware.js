@@ -1,13 +1,24 @@
 // imports
 const Joi = require('joi');
 const {
-    bookSchema
+    createBookSchema,
+    updateBookSchema
  } = require('../validators/book.validator');
 
 // middlewares
 const validateBookReq = async (req, res, next) => {
     try {
-        await bookSchema.validateAsync(req.body);
+        await createBookSchema.validateAsync(req.body);
+        next();
+
+    } catch (error) {
+        next(error);
+    }
+}
+
+const validateUpdateBookReq = async (req, res, next) => {
+    try {
+        await updateBookSchema.validateAsync(req.body);
         next();
 
     } catch (error) {
@@ -17,5 +28,6 @@ const validateBookReq = async (req, res, next) => {
 
 // exports
 module.exports = {
-    validateBookReq
+    validateBookReq,
+    validateUpdateBookReq
 }

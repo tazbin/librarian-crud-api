@@ -12,7 +12,13 @@ function isValidObjectId(id){
     return false;
 }
 
+function trimAllObjValue(obj) {
+    Object.keys(obj).map(k => 
+        obj[k] = typeof obj[k] == 'string' ? obj[k].trim() : obj[k]);
+}
+
 // exports
 module.exports = {
-    isValidObjectId
+    isValidObjectId,
+    trimAllObjValue
 }
