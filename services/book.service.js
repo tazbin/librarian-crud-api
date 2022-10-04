@@ -39,9 +39,8 @@ const updateBook = async(
     fields) => {
     try {
 
-        console.log(bookId);
         const books = await Book
-        .findByIdAndUpdate(bookId, fields);
+        .findByIdAndUpdate(bookId, fields, {new: true});
 
         return Promise.resolve(books);
 

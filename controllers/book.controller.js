@@ -11,10 +11,13 @@ const createBook = async(req, res, next) => {
         
         trimAllObjValue(req.body);
         let bookBody = req.body;
-        console.log(bookBody);
 
         const savedBook = await bookService.createBook(bookBody)
-        res.status(201).send(`New book created with title '${savedBook.title}' & author '${savedBook.author}`);
+        // res.status(201).send({
+        //     msg: `New book created with title '${savedBook.title}' & author '${savedBook.author}'`,
+        //     bookId: savedBook._id
+        // });
+        res.status(201).send(savedBook);
 
     } catch (error) {
         next(error);
@@ -71,7 +74,7 @@ const editBook = async(req, res, next) => {
             author: bookBody.author
         });
 
-        res.send(`Book updated with id ${bookBody.bookId}`);
+        res.send(updatedBook);
 
     } catch (error) {
         next(error);
@@ -102,7 +105,9 @@ const deleteBook = async(req, res, next) => {
         const deleteStatus = await bookService.deleteBook(deleteParams);
 
         if( deleteStatus.deletedCount == 1 ) {
-            res.send(`Book deleted with id ${bookId}`);
+            res.send({
+                msg: `Book deleted with id ${bookId}`
+            });
         } else {
             throw createErrors.InternalServerError(`Couldn't delete, try again`);
         }
