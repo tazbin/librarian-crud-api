@@ -34,6 +34,10 @@ app.use(async(req, res, next) => {
 // handle errors
 app.use((err, req, res, next) => {
 
+    if( err.name == "ValidationError" ) {
+        err.status = 400;
+    }
+
     res.status(err.status || 500);
     res.send({
         error: {

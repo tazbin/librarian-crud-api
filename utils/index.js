@@ -1,4 +1,3 @@
-
 // Requiring ObjectId from mongoose npm package
 const ObjectId = require('mongoose').Types.ObjectId;
  
@@ -13,23 +12,13 @@ function isValidObjectId(id){
     return false;
 }
 
-makeObjValueLowerCase = (obj) => {
-
-    for (const key in obj) {
-
-        if (obj.hasOwnProperty(key)) {
-    
-            if( typeof obj[key] === "string" )
-            obj[key] = obj[key].toLowerCase().trim();
-        }
-    }
-    
-    return obj;
-
+function trimAllObjValue(obj) {
+    Object.keys(obj).map(k => 
+        obj[k] = typeof obj[k] == 'string' ? obj[k].trim() : obj[k]);
 }
 
 // exports
 module.exports = {
-    makeObjValueLowerCase,
-    isValidObjectId
+    isValidObjectId,
+    trimAllObjValue
 }

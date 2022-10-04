@@ -3,16 +3,18 @@ const express = require('express');
 const createErrors = require('http-errors');
 const bookService = require('../services/book.service');
 const { Book } = require('../models/book.model');
-const { isValidObjectId } = require('../utils');
+const { isValidObjectId, trimAllObjValue } = require('../utils');
 const { create } = require('domain');
 
 const createBook = async(req, res, next) => {
     try {
         
+        trimAllObjValue(req.body);
         let bookBody = req.body;
+        console.log(bookBody);
 
         const savedBook = await bookService.createBook(bookBody)
-        res.send(`New book created with title '${savedBook.title}' & author '${savedBook.author}`);
+        res.status(201).send(`New book created with title '${savedBook.title}' & author '${savedBook.author}`);
 
     } catch (error) {
         next(error);
@@ -49,15 +51,11 @@ const getBooks = async(req, res, next) => {
 const editBook = async(req, res, next) => {
     try {
         
-        const bookId = req.params.bookId;
+        trimAllObjValue(req.body);
         const bookBody = req.body;
 
-        if( !isValidObjectId(bookId) ) {
-            throw createErrors.BadRequest("Invalid book id");
-        }
-
         // search with bookid
-        const searchParams = {_id: bookId };
+        const searchParams = {_id: bookBody.bookId };
         const selectFields = ['title'];
 
         const bookExists = await bookService.readBooks(searchParams, selectFields);
@@ -67,9 +65,13 @@ const editBook = async(req, res, next) => {
         }
 
         // update book
-        const updatedBook = await bookService.updateBook(bookId, bookBody);
+        const updatedBook = await bookService.updateBook(
+            bookBody.bookId, {
+            title: bookBody.title,
+            author: bookBody.author
+        });
 
-        res.send(`Book updated with id ${bookId}`);
+        res.send(`Book updated with id ${bookBody.bookId}`);
 
     } catch (error) {
         next(error);
