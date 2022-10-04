@@ -12,15 +12,7 @@ const bookSchema = Joi.object({
     author: Joi.string()
         .min(3)
         .max(30)
-        .required(),
-
-    genre: Joi.string()
-        .min(3)
-        .max(30),
-
-    page: Joi.number(),
-
-    published: Joi.number()
+        .required()
 
 });
 

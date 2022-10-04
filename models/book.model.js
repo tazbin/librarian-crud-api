@@ -11,15 +11,6 @@ const bookSchema = new Schema({
     author: {
         type: String,
         required: true
-    },
-    genre: {
-        type: String
-    },
-    page: {
-        type: Number
-    },
-    published: {
-        type: Number
     }
   });
 

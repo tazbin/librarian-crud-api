@@ -101,9 +101,10 @@ const deleteBook = async(req, res, next) => {
 
         if( deleteStatus.deletedCount == 1 ) {
             res.send(`Book deleted with id ${bookId}`);
+        } else {
+            throw createErrors.InternalServerError(`Couldn't delete, try again`);
         }
 
-        throw createErrors.InternalServerError(`Couldn't delete, try again`);
 
     } catch (error) {
         next(error);
