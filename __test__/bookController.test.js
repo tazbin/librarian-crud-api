@@ -3,9 +3,11 @@ const mongoose = require("mongoose");
 const { Book } = require("../models/book.model");
 const app = require('../app');
 
+require('dotenv').config();
+
 beforeEach((done) => {
     mongoose.connect(
-        "mongodb://localhost:27017/librarian-test",
+        process.env.MONGODB_URL_TEST,
         { useNewUrlParser: true },
         () => done()
     )
