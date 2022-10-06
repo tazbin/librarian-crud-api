@@ -21,7 +21,11 @@ This is a simple CRUD application where a librarian who can create books with au
 **Database**
 - [x] MongoDB
 
-## How to install & run:
+**Testing framework & library**
+- [x] Jest
+- [x] SuperTest
+
+## Getting the app:
 ### Using Git (recommended)
 1. Navigate & open CLI into the directory where you want to put this project & Clone this project (will be cloned inside librarian-crud-api folder) using this command.
    
@@ -32,13 +36,42 @@ git clone https://github.com/tazbin/librarian-crud-api.git ./librarian-crud-api
 1. Download repository
 2. Extract the zip file, navigate into it & copy the folder to your desired directory
 
-### Run the project
-Run this command & wait for docker build
+### Running the app:
+To build docker image
 ```bash
 docker compose build --no-cache
 ```
 
-The run the docker this container using command & wait for a while to connect with database
+To run he containers in detached mode (wait for a while for database connecton)
 ```bash
-docker compose up
+docker compose up -d
+```
+
+To view running containers
+```bash
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS                     NAMES
+42d69df5808c   task1-api      "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3000->3000/tcp    librarian-api-c
+bd1ca6d68da2   mongo:latest   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:2717->27017/tcp   librarian-db-c
+```
+
+To view API logs
+```bash
+docker logs librarian-api-c
+```
+
+To run tests, first enter within the API container
+```bash
+docker exec -it librarian-api-c /bin/sh
+```
+The, run this command to execute tests
+```bash
+npm test
+```
+To exit API container
+```bash
+CTRL + D
+```
+To stops the containers
+```bash
+docker compose down
 ```
