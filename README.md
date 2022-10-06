@@ -33,20 +33,12 @@ git clone https://github.com/tazbin/librarian-crud-api.git ./librarian-crud-api
 2. Extract the zip file, navigate into it & copy the folder to your desired directory
 
 ### Run the project
-Run the command & wait for docker build
+Run this command & wait for docker build
 ```bash
 docker compose build --no-cache
 ```
 
-The run in docker container using command & wait for a while to connect with database
+The run the docker this container using command & wait for a while to connect with database
 ```bash
 docker compose up
-```
-
-Press CTRL + C to stop the server.
-
-### Run tests
-Run the tests using the command
-```bash
-npm test
 ```
