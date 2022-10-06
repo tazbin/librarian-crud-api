@@ -21,6 +21,10 @@ This is a simple CRUD application where a librarian who can create books with au
 **Database**
 - [x] MongoDB
 
+**Testing framework & library**
+- [x] Jest
+- [x] SuperTest
+
 ## Getting the app:
 ### Using Git (recommended)
 1. Navigate & open CLI into the directory where you want to put this project & Clone this project (will be cloned inside librarian-crud-api folder) using this command.
