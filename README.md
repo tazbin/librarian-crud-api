@@ -35,7 +35,7 @@ git clone https://github.com/tazbin/librarian-crud-api.git ./librarian-crud-api
 ### Run the project
 Run the command & wait for docker build
 ```bash
-docker compose build
+docker compose build --no-cache
 ```
 
 The run in docker container using command & wait for a while to connect with database
