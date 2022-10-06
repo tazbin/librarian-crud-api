@@ -49,9 +49,7 @@ docker compose up -d
 
 To view running containers
 ```bash
-CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS                     NAMES
-42d69df5808c   task1-api      "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3000->3000/tcp    librarian-api-c
-bd1ca6d68da2   mongo:latest   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:2717->27017/tcp   librarian-db-c
+docker container ps
 ```
 
 To view API logs
