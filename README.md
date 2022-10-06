@@ -61,14 +61,12 @@ To run tests, first enter within the API container
 ```bash
 docker exec -it librarian-api-c /bin/sh
 ```
-The, run this command to execute tests
+Then, run this command to execute tests
 ```bash
 npm test
 ```
-To exit API container
-```bash
-CTRL + D
-```
+To exit from API container, press ```CTRL + D``` on terminal
+
 To stops the containers
 ```bash
 docker compose down
