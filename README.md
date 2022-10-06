@@ -66,6 +66,10 @@ This is a simple CRUD application where a librarian can create books with author
         ```bash
         docker exec -it librarian-api-c //bin//sh
         ```
+        or
+        ```bash
+        winpty docker exec -it librarian-api-c //bin//sh
+        ```
     now run **test command**
     ```bash
     npm test
